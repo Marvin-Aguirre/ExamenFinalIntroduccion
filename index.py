@@ -148,19 +148,50 @@ def funcion4 ():
                 apellido = entryA.get()          
                 cuenta = 0
                 reg = 0
-        for J in nombre:
-            if J == 'a' or J =='A' or J =='e' or J =='E' or J =='i' or J=='I' or J=='o' or J=="O" or J=="u" or J=="U":
-                cuenta += 1
-                reg1=len(nombre)
-                consonante=reg1-cuenta
-        for i in apellido:
-            if i == 'a' or i =='A' or i =='e' or i =='E' or i =='i' or i=='I' or i=='o' or i=="O" or i=="u" or i=="U":
-                reg += 1
-                cunta=len(apellido)
-                con=cunta-reg        
-                
-                label7['text'] = nombre+' tiene {} vocales y {} consonantes, '.format(cuenta,consonante)+apellido+' tiene {} vocales y {} consonantes, '.format(reg,con)
+                #CICLO PARA RECORRER EL NOMBRE
+                for J in nombre:
+                    if J == 'a' or J =='A' or J =='e' or J =='E' or J =='i' or J=='I' or J=='o' or J=="O" or J=="u" or J=="U":
+                        cuenta += 1
+                        reg1=len(nombre)
+                        #SE REALIZA UNA RESTA, AL TOTAL DE CARACTERES DEL NOMBRE SE LE RESTAN LAS VOCALES
+                        consonante=reg1-cuenta
+                #CICLO PARA RECORRER EL APELLIDO        
+                for i in apellido:
+                    if i == 'a' or i =='A' or i =='e' or i =='E' or i =='i' or i=='I' or i=='o' or i=="O" or i=="u" or i=="U":
+                        reg += 1
+                        cunta=len(apellido)
+                        con=cunta-reg        
 
+                        label7['text'] = nombre+' tiene {} vocales y {} consonantes, '.format(cuenta,consonante)+apellido+' tiene {} vocales y {} consonantes, '.format(reg,con)
+#FUNCION 5
+def funcion5 ():
+    if entryN.get().strip() == "" or entryA.get().strip() == "" or entryDia.get().strip() == "" or entryMes.get().strip() == "" or entryAño.get().strip() == "":
+        label7["text"]= "Todos los campos son requeridos"
+    else:
+        #SE OBTIENEN LOS DATOS INGRESADOS POR EL USUARIO
+        d1 = int(entryDia.get())
+        m1 = int(entryMes.get())
+        a1 = int(entryAño.get())
+        ac = datetime.datetime.now()
+        #SE CREAN VARIABLES PARA VALIDAR LA FECHA INGRESADA POR EL USUARIO
+        añ = ac.year
+        me = ac.month
+        di = ac.day
+        fecha = date(añ, me, di)
+        if d1==0 or m1 == 0 or a1==0:
+            label7["text"]= "Fecha invalida"
+        else:
+            ingres = date(a1, m1, d1)
+            if ingres>fecha:
+                label7["text"]= "Ingreso una fecha mayor a la fecha actual"
+            else:
+                #SE OBTIENEN LOS DATOS DE LOS ENTRY
+                nombre = entryN.get()
+                apellido = entryA.get() 
+                #SE CAMBOA EL ORDEN DE LOS CARACTERES
+                c = nombre[::-1]
+                d = apellido[::-1] 
+                label7["text"]= nombre + " " + apellido +" al revés es " + c + " " + d 
 
 entryN = tkinter.Entry(AFrame)
 entryA = tkinter.Entry(AFrame)
@@ -172,7 +203,7 @@ boton1 = tkinter.Button(AFrame, text = "Función 1", command = funcion1)
 boton2 = tkinter.Button(AFrame, text = "Función 2", command = funcion2)
 boton3 = tkinter.Button(AFrame, text = "Función 3", command = funcion3)
 boton4 = tkinter.Button(AFrame, text = "Función 4", command = funcion4)
-boton5 = tkinter.Button(AFrame, text = "Función 5")
+boton5 = tkinter.Button(AFrame, text = "Función 5", command = funcion5)
 #SE LES ASIGNO UNA POSICION DENTRO DE LA VENTANA
 label1.grid(row = 0, column = 0, columnspan = 6)
 label2.grid(row = 1, column = 1, columnspan = 2)
