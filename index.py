@@ -26,9 +26,9 @@ def funcion1 ():
         label7["text"]= "Todos los campos son requeridos"
     else:
         #SE OBTIENEN LOS DATOS INGRESADOS POR EL USUARIO
-        dia1 = int(entryDia.get())
-        mes1 = int(entryMes.get())
-        año1 = int(entryAño.get())
+        d1 = int(entryDia.get())
+        m1 = int(entryMes.get())
+        a1 = int(entryAño.get())
         hoy = datetime.datetime.now()
         #SE CREAN VARIABLES PARA VALIDAR LA FECHA INGRESADA POR EL USUARIO
         añ = hoy.year
@@ -36,10 +36,10 @@ def funcion1 ():
         di = hoy.day
         fecha = date(añ, me, di)
         #SE VALIDA LA FECHA INGRESADA (CUANDO  EL USUARIO INGRESA 0)
-        if dia1==0 or mes1 == 0 or año1==0:
+        if d1==0 or m1 == 0 or a1==0:
             label7["text"]= "Fecha invalida"
         else:
-            ingres = date(año1, mes1, dia1)
+            ingres = date(a1, m1, d1)
             #SE VALIDA LA FECHA INGRESADA
             if ingres>fecha:
                 label7["text"]= "Ingreso una fecha mayor a la fecha actual"
@@ -51,20 +51,53 @@ def funcion1 ():
                 #SE MUESTRA EL RESULTADO
                 label7["text"]= ("La fecha ingresada es: " + str(x) +"/"+ str(y) +"/"+ str(z)+ 
                 " la fecha en hexadecimal es: " + hex(x).lstrip("0x").rstrip("L")+"/"+ hex(y).lstrip("0x").rstrip("L")+"/"+ hex(z).lstrip("0x").rstrip("L"))
-                
+#SE CREA LA FUNCION #2
+def funcion2 ():
+    if entryN.get().strip() == "" or entryA.get().strip() == "" or entryDia.get().strip() == "" or entryMes.get().strip() == "" or entryAño.get().strip() == "":
+        label7["text"]= "Todos los campos son requeridos"
+    else:
+        #SE OBTIENEN LOS DATOS INGRESADOS POR EL USUARIO
+        d1 = int(entryDia.get())
+        m1 = int(entryMes.get())
+        a1 = int(entryAño.get())
+        ac = datetime.datetime.now()
+        #SE CREAN VARIABLES PARA VALIDAR LA FECHA INGRESADA POR EL USUARIO
+        añ = ac.year
+        me = ac.month
+        di = ac.day
+        fecha = date(añ, me, di)
+        if d1==0 or m1 == 0 or a1==0:
+            label7["text"]= "Fecha invalida"
+        else:
+            ingres = date(a1, m1, d1)
+            if ingres>fecha:
+                label7["text"]= "Ingreso una fecha mayor a la fecha actual"
+            else:
+                #SE OBTIENEN LOS DATOS DE LOS ENTRY
+                x = int(entryDia.get())
+                y = int(entryMes.get())
+                z = int(entryAño.get())
+                horasvividas = (fecha-ingres)*24
+        #CONDICION PARA AGREGAR UN 0 SI EL NUMERO DE MES ES MENOR A 10
+        if m1<10:
+            #MOSTRANDO LOS RESULTADOS
+            label7["text"]= "Usted nació el " + str(x) + "/0" + str(y) + "/" + str(z) + " y ha vivido " + str(horasvividas.days) + " horas"
+                        
+        else:
+            #MOSTRANDO LOS RESULTADOS
+            label7["text"]= "Usted nació el " + str(x) + "/" + str(y) + "/" + str(z) + " y ha vivido " + str(horasvividas.days) + " horas"
+
 entryN = tkinter.Entry(AFrame)
 entryA = tkinter.Entry(AFrame)
 entryDia = Entry(AFrame)
 entryMes = Entry(AFrame)    
-entryAño = Entry(AFrame)
+entryAño = Entry(AFrame) 
 
 boton1 = tkinter.Button(AFrame, text = "Función 1", command = funcion1)
-boton2 = tkinter.Button(AFrame, text = "Función 2")
+boton2 = tkinter.Button(AFrame, text = "Función 2", command = funcion2)
 boton3 = tkinter.Button(AFrame, text = "Función 3")
 boton4 = tkinter.Button(AFrame, text = "Función 4")
 boton5 = tkinter.Button(AFrame, text = "Función 5")
-
-
 #SE LES ASIGNO UNA POSICION DENTRO DE LA VENTANA
 label1.grid(row = 0, column = 0, columnspan = 6)
 label2.grid(row = 1, column = 1, columnspan = 2)
@@ -83,7 +116,4 @@ boton2.grid(row = 6, column = 2)
 boton3.grid(row = 6, column = 3)
 boton4.grid(row = 6, column = 4)
 boton5.grid(row = 6, column = 5)
-
-
-
 window.mainloop()
