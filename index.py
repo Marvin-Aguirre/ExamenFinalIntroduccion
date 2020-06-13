@@ -86,6 +86,41 @@ def funcion2 ():
         else:
             #MOSTRANDO LOS RESULTADOS
             label7["text"]= "Usted nació el " + str(x) + "/" + str(y) + "/" + str(z) + " y ha vivido " + str(horasvividas.days) + " horas"
+def funcion3 ():
+    if entryN.get().strip() == "" or entryA.get().strip() == "" or entryDia.get().strip() == "" or entryMes.get().strip() == "" or entryAño.get().strip() == "":
+        label7["text"]= "Todos los campos son requeridos"
+    else:
+        #SE OBTIENEN LOS DATOS INGRESADOS POR EL USUARIO
+        d1 = int(entryDia.get())
+        m1 = int(entryMes.get())
+        a1 = int(entryAño.get())
+        ac = datetime.datetime.now()
+        #SE CREAN VARIABLES PARA VALIDAR LA FECHA INGRESADA POR EL USUARIO
+        añ = ac.year
+        me = ac.month
+        di = ac.day
+        fecha = date(añ, me, di)
+        if d1==0 or m1 == 0 or a1==0:
+            label7["text"]= "Fecha invalida"
+        else:
+            ingres = date(a1, m1, d1)
+            if ingres>fecha:
+                label7["text"]= "Ingreso una fecha mayor a la fecha actual"
+            else:
+                #SE OBTIENEN LOS DATOS DE LOS ENTRY
+                nombre = entryN.get()
+                apellido = entryA.get()
+                #VARIABLES PARA LEER EL TAMA;O DEL NOMBRE Y APELLIDO
+                A = len(nombre)
+                B = len(apellido)
+                #VARIABLE PARA ALMACENAR LOS RESULTADOS
+                result = ''
+                #CONDICION SI EL RESULTADO ES 0 EL NOMBRE+APELLIDO SERA PAR
+                if A % 2==0 and B%2== 0:  
+                    result = 'Su nombre junto con su apellido es par'
+                else:
+                    result = ' su nombre junto con su apellido es impar'
+                label7["text"]= ' ' +nombre + ' ' + apellido + ' ' + result+''
 
 entryN = tkinter.Entry(AFrame)
 entryA = tkinter.Entry(AFrame)
@@ -95,7 +130,7 @@ entryAño = Entry(AFrame)
 
 boton1 = tkinter.Button(AFrame, text = "Función 1", command = funcion1)
 boton2 = tkinter.Button(AFrame, text = "Función 2", command = funcion2)
-boton3 = tkinter.Button(AFrame, text = "Función 3")
+boton3 = tkinter.Button(AFrame, text = "Función 3", command = funcion3)
 boton4 = tkinter.Button(AFrame, text = "Función 4")
 boton5 = tkinter.Button(AFrame, text = "Función 5")
 #SE LES ASIGNO UNA POSICION DENTRO DE LA VENTANA
