@@ -50,5 +50,15 @@ boton3.grid(row = 6, column = 3)
 boton4.grid(row = 6, column = 4)
 boton5.grid(row = 6, column = 5)
 
+#SE CREO LA FUNCION 1
+def funcion1 ():
+#SE CREO LA FUNCION 2
+def funcion2 ():
+#SE CREO LA FUNCION 3
+def funcion3 ():
+#SE CREO LA FUNCION 4
+def funcion4 ():  
+#SE CREO LA FUNCION 5
+def funcion5 ():      
 
 window.mainloop()
