@@ -21,14 +21,14 @@ label7 = tkinter.Label(AFrame, text = "Acá se verá el resultado de las funcion
 entryN = tkinter.Entry(AFrame)
 entryA = tkinter.Entry(AFrame)
 entryDia = Entry(AFrame)
-entryMes = Entry(AFrame)
+entryMes = Entry(AFrame)    
 entryAño = Entry(AFrame)
-#BOTONES Y ASIGNACION DE FUNCIONES
-boton1 = tkinter.Button(AFrame, text = "Función 1")
-boton2 = tkinter.Button(AFrame, text = "Función 2")
-boton3 = tkinter.Button(AFrame, text = "Función 3")
-boton4 = tkinter.Button(AFrame, text = "Función 4")
-boton5 = tkinter.Button(AFrame, text = "Función 5")
+
+boton1 = tkinter.Button(AFrame, text = "Función 1", command = funcion1)
+boton2 = tkinter.Button(AFrame, text = "Función 2", command = funcion2)
+boton3 = tkinter.Button(AFrame, text = "Función 3", command = funcion3)
+boton4 = tkinter.Button(AFrame, text = "Función 4", command = funcion4)
+boton5 = tkinter.Button(AFrame, text = "Función 5", command = funcion5)
 
 
 #SE LES ASIGNO UNA POSICION DENTRO DE LA VENTANA
